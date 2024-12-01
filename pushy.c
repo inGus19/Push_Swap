@@ -1,48 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   pushy.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acaes <acaes@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 17:16:31 by acaes             #+#    #+#             */
-/*   Updated: 2024/12/01 17:16:36 by acaes            ###   ########.fr       */
+/*   Created: 2024/12/01 17:15:44 by acaes             #+#    #+#             */
+/*   Updated: 2024/12/01 17:32:32 by acaes            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate(t_stack **stack)
+void	pushy(t_stack **src, t_stack **dst)
 {
-	t_stack	*first;
-	t_stack	*last;
+	t_stack	*tmp;
 
-	if (!stack || !(*stack) !((*stack)->next))
+	if (!src || !*src)
 		return ;
-	first = *stack;
-	last = *stack;
-	while (last->next)
-		last = last->next;
-	*stack = first->next;
-	first->next = NULL;
-	last->next = first;
+	tmp = *src;
+	*src = tmp->next;
+	tmp->next = *dst;
+	*dst = tmp;
 }
 
-void	ra(t_stack **a)
+void	pa(t_stack **b, t_stack **a)
 {
-	rotate(a);
-	ft_printf("ra\n");
+	pushy(b, a);
+	ft_printf("pa\n");
 }
 
-void	rb(t_stack **b)
+void	pb(t_stack **a, t_stack **b)
 {
-	rotate(b);
-	ft_printf("rb\n");
-}
-
-void	rab(t_stack **a, t_stack **b)
-{
-	rotate(a);
-	rotate(b);
-	ft_printf("rab\n");
+	pushy(a, b);
+	ft_printf("pb\n");
 }

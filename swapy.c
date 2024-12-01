@@ -1,48 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   swapy.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acaes <acaes@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 17:16:31 by acaes             #+#    #+#             */
-/*   Updated: 2024/12/01 17:16:36 by acaes            ###   ########.fr       */
+/*   Created: 2024/12/01 17:16:04 by acaes             #+#    #+#             */
+/*   Updated: 2024/12/01 17:33:34 by acaes            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate(t_stack **stack)
+void	swapy(t_stack **stack)
 {
-	t_stack	*first;
-	t_stack	*last;
+	t_satck	*first;
+	t_stack	*second;
 
-	if (!stack || !(*stack) !((*stack)->next))
+	if (!stack || !(*stack) || !((*stack)->next))
 		return ;
 	first = *stack;
-	last = *stack;
-	while (last->next)
-		last = last->next;
-	*stack = first->next;
-	first->next = NULL;
-	last->next = first;
+	second = first->next;
+	first->next = second->next;
+	second->next = first;
+	*stack = second;
 }
 
-void	ra(t_stack **a)
+void	sa(t_stack **a)
 {
-	rotate(a);
-	ft_printf("ra\n");
+	swapy(a);
+	ft_printf("sa\n");
 }
 
-void	rb(t_stack **b)
+void	sb(t_stack **b)
 {
-	rotate(b);
-	ft_printf("rb\n");
+	swapy(b);
+	ft_printf("sb\n");
 }
 
-void	rab(t_stack **a, t_stack **b)
+void	sab(t_stack **a, t_stack **b)
 {
-	rotate(a);
-	rotate(b);
-	ft_printf("rab\n");
+	swapy(a);
+	swapy(b);
+	ft_printf("sab\n");
 }

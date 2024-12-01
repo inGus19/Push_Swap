@@ -1,48 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   revrot.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acaes <acaes@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 17:16:31 by acaes             #+#    #+#             */
-/*   Updated: 2024/12/01 17:16:36 by acaes            ###   ########.fr       */
+/*   Created: 2024/12/01 17:16:46 by acaes             #+#    #+#             */
+/*   Updated: 2024/12/01 17:16:50 by acaes            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate(t_stack **stack)
+void	rev_rot(t_stack **stack)
 {
-	t_stack	*first;
+	t_satck	*prev;
 	t_stack	*last;
 
-	if (!stack || !(*stack) !((*stack)->next))
+	if (!stack || !(*stack) || !((*stack)->next))
 		return ;
-	first = *stack;
+	prev = NULL;
 	last = *stack;
 	while (last->next)
+	{
+		prev = last;
 		last = last->next;
-	*stack = first->next;
-	first->next = NULL;
-	last->next = first;
+	}
+	prev->next = NULL;
+	last->next = *satck;
+	*stack = last;
 }
 
-void	ra(t_stack **a)
+void	rra(t_stack **a)
 {
-	rotate(a);
-	ft_printf("ra\n");
+	rev_rot(a);
+	ft_printf("rra\n");
 }
 
-void	rb(t_stack **b)
+void	rrb(t_stack **b)
 {
-	rotate(b);
-	ft_printf("rb\n");
+	rev_rot(b);
+	ft_printf("rrb\n");
 }
 
-void	rab(t_stack **a, t_stack **b)
+void	rrr(t_stack **a, t_stack **b)
 {
-	rotate(a);
-	rotate(b);
-	ft_printf("rab\n");
+	rev_rot(a);
+	rev_rot(b);
+	ft_printf("rrr\n");
 }
