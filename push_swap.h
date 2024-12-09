@@ -12,12 +12,12 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include "../Ultimate/inc/ultimate.h"
 # include <unistd.h>
 # include <stdlib.h>
 
 # include <stdio.h> 		 //enlever avant push !!
 
-//# include "../Ultimate/inc/ultimate.h"
 typedef struct s_node 
 {
     int value;               // Valeur du nœud

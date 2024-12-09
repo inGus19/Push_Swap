@@ -29,7 +29,7 @@ OBJ = $(SRC:.c=.o)
 
 # Compilateur et options
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I $(LIBFT_PATH)
 
 # Commande de suppression
 RM = rm -rf
