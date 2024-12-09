@@ -1,46 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swapy.c                                            :+:      :+:    :+:   */
+/*   pushy.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acaes <acaes@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 17:16:04 by acaes             #+#    #+#             */
-/*   Updated: 2024/12/01 17:33:34 by acaes            ###   ########.fr       */
+/*   Created: 2024/12/01 17:15:44 by acaes             #+#    #+#             */
+/*   Updated: 2024/12/01 17:32:32 by acaes            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swapy(t_stack **stack)
+void pa(t_stack *a, t_stack *b) 
 {
-	t_satck	*first;
-	t_stack	*second;
+    if (!b || b->size == 0)
+        return;
 
-	if (!stack || !(*stack) || !((*stack)->next))
-		return ;
-	first = *stack;
-	second = first->next;
-	first->next = second->next;
-	second->next = first;
-	*stack = second;
+    t_node *top_b = dlst_remove_front(b);
+    dlst_add_front(a, top_b);
 }
 
-void	sa(t_stack **a)
+void pb(t_stack *b, t_stack *a) 
 {
-	swapy(a);
-	ft_printf("sa\n");
-}
+    if (!a || a->size == 0)
+        return;
 
-void	sb(t_stack **b)
-{
-	swapy(b);
-	ft_printf("sb\n");
-}
-
-void	sab(t_stack **a, t_stack **b)
-{
-	swapy(a);
-	swapy(b);
-	ft_printf("sab\n");
+    t_node *top_a = dlst_remove_front(a);
+    dlst_add_front(b, top_a);
 }

@@ -10,39 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	rotate(t_stack **stack)
+void ra(t_stack *a) 
 {
-	t_stack	*first;
-	t_stack	*last;
+    if (!a || a->size < 2)
+        return;
 
-	if (!stack || !(*stack) !((*stack)->next))
-		return ;
-	first = *stack;
-	last = *stack;
-	while (last->next)
-		last = last->next;
-	*stack = first->next;
-	first->next = NULL;
-	last->next = first;
+    t_node *top = dlst_remove_front(a);
+    dlst_add_back(a, top);
 }
 
-void	ra(t_stack **a)
+void rb(t_stack *b) 
 {
-	rotate(a);
-	ft_printf("ra\n");
+    if (!b || b->size < 2)
+        return;
+
+    t_node *top = dlst_remove_front(b);
+    dlst_add_back(b, top);
 }
 
-void	rb(t_stack **b)
+void rr(t_stack *a, t_stack *b) 
 {
-	rotate(b);
-	ft_printf("rb\n");
-}
-
-void	rab(t_stack **a, t_stack **b)
-{
-	rotate(a);
-	rotate(b);
-	ft_printf("rab\n");
+    ra(a);
+    rb(b);
 }

@@ -11,26 +11,46 @@
 # **************************************************************************** #
 
 NAME = push_swap
-LIBFT_PATH = ../Finish/Libft
+
+SRC_DIR = .
+MOV_DIR = mouv
+DLST_DIR = dlst
+LIBFT_PATH = ../Ultimate/inc
+
 LIBFT = $(LIBFT_PATH)/libft.a
 
-SOURCE = push_swap.c 
-OBJET = $(SOURCES:.c=.o)
+SRC = $(SRC_DIR)/push_swap.c $(SRC_DIR)/dlst_print.c \
+	  $(wildcard $(MOV_DIR)/*.c) \
+	  $(wildcard $(DLST_DIR)/*.c)
 
+# Objets
+OBJ_DIR = obj
+OBJ = $(SRC:.c=.o)
+
+# Compilateur et options
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-RM = @rm -rf
 
+# Commande de suppression
+RM = rm -rf
+
+# Règles
 all: $(NAME)
 
-$(NAME): $(OBJET) $(LIBFT)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJET) $(LIBFT)
+$(NAME): $(OBJ) $(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
 
 $(LIBFT):
 	make -C $(LIBFT_PATH)
 
+$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
 clean:
-	$(RM) $(OBJET)
+	$(RM) $(OBJ)
 	make clean -C $(LIBFT_PATH)
 
 fclean: clean

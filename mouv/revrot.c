@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushy.c                                            :+:      :+:    :+:   */
+/*   revrot.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acaes <acaes@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 17:15:44 by acaes             #+#    #+#             */
-/*   Updated: 2024/12/01 17:32:32 by acaes            ###   ########.fr       */
+/*   Created: 2024/12/01 17:16:46 by acaes             #+#    #+#             */
+/*   Updated: 2024/12/01 17:16:50 by acaes            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	pushy(t_stack **src, t_stack **dst)
+void rra(t_stack *a) 
 {
-	t_stack	*tmp;
+    if (!a || a->size < 2)
+        return;
 
-	if (!src || !*src)
-		return ;
-	tmp = *src;
-	*src = tmp->next;
-	tmp->next = *dst;
-	*dst = tmp;
+    t_node *last = dlst_remove_back(a);
+    dlst_add_front(a, last);
 }
 
-void	pa(t_stack **b, t_stack **a)
+void rrb(t_stack *b) 
 {
-	pushy(b, a);
-	ft_printf("pa\n");
+    if (!b || b->size < 2)
+        return;
+
+    t_node *last = dlst_remove_back(b);
+    dlst_add_front(b, last);
 }
 
-void	pb(t_stack **a, t_stack **b)
+void rrr(t_stack *a, t_stack *b) 
 {
-	pushy(a, b);
-	ft_printf("pb\n");
+    rra(a);
+    rrb(b);
 }

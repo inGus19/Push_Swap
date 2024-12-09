@@ -1,66 +1,45 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: acaes <acaes@student.s19.be>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 17:17:18 by acaes             #+#    #+#             */
-/*   Updated: 2024/12/01 18:27:46 by acaes            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdio.h>
 #include "push_swap.h"
 
-void	print_stack(t_stack *stack)
+int main(int argc, char **argv)
 {
-    while (stack)
+    t_dlist *stack_a;
+    t_dlist *stack_b;
+
+    // Initialisation des piles
+    stack_a = dlst_new();
+    stack_b = dlst_new();
+
+    if (argc < 2)
     {
-        printf("%d ", stack->value);
-        stack = stack->next;
+        // Pas assez d'arguments, on termine le programme.
+        write(2, "Error: Not enough arguments\n", 27);
+        return 1;
     }
-    printf("\n");
+
+    // Remplir la pile a avec les valeurs passées en arguments
+    if (!parse_arguments(argc, argv, &stack_a))
+    {
+        write(2, "Error: Invalid input\n", 21);
+        free_stack(stack_a);
+        free_stack(stack_b);
+        return 1;
+    }
+
+    // Vérification si la pile est déjà triée
+    if (is_sorted(stack_a))
+    {
+        free_stack(stack_a);
+        free_stack(stack_b);
+        return 0;
+    }
+
+    // Algorithme de tri
+    sort_stack(&stack_a, &stack_b);
+
+    // Libération de la mémoire allouée
+    free_stack(stack_a);
+    free_stack(stack_b);
+
+    return 0;
 }
 
-int	main()
-{
-    printf("=== Test de sa ===\n");
-    t_stack a1 = {1, NULL};
-    t_stack a2 = {2, &a1};
-    t_stack a3 = {3, &a2};
-    t_stack *stack_a = &a3;
-    print_stack(stack_a);
-    sa(&stack_a);
-    print_stack(stack_a);
-
-    printf("=== Test de pb ===\n");
-    t_stack *stack_b = NULL;
-    pb(&stack_a, &stack_b);
-    print_stack(stack_a);
-    print_stack(stack_b);
-
-    printf("=== Test de ra ===\n");
-    ra(&stack_a);
-    print_stack(stack_a);
-
-    printf("=== Test de rra ===\n");
-    rra(&stack_a);
-    print_stack(stack_a);
-
-    printf("=== Test de sab ===\n");
-    t_stack b1 = {4, NULL};
-    t_stack b2 = {5, &b1};
-    t_stack *stack_b2 = &b2;
-    print_stack(stack_a);
-    print_stack(stack_b2);
-    sab(&stack_a, &stack_b2);
-    print_stack(stack_a);
-    print_stack(stack_b2);
-
-    printf("=== Test de rrr ===\n");
-    rrr(&stack_a, &stack_b2);
-    print_stack(stack_a);
-    print_stack(stack_b2);
-	return (0);
-}
