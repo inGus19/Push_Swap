@@ -10,52 +10,50 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME = test
 
-SRC_DIR = .
-MOV_DIR = mouv
-DLST_DIR = dlst
-LIBFT_PATH = ../Ultimate/inc
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -I .
 
-LIBFT = $(LIBFT_PATH)/libft.a
+SRCS = src/pars/parse_arguments.c \
+       src/pars/is_number.c \
+       src/pars/is_unique.c \
+       src/pars/ft_atoi.c \
+       src/dlst/dlst_new.c \
+       src/dlst/dlst_init.c \
+       src/dlst/dlst_add_front.c \
+       src/dlst/dlst_add_back.c \
+       src/dlst/dlst_remove_front.c \
+       src/dlst/dlst_remove_back.c \
+       src/dlst/free_dlst.c \
+       src/dlst/is_sorted.c \
+       src/mouv/sa.c \
+       src/mouv/sb.c \
+       src/mouv/ss.c \
+       src/mouv/pa.c \
+       src/mouv/pb.c \
+       src/mouv/ra.c \
+       src/mouv/rb.c \
+       src/mouv/rr.c \
+       src/mouv/rra.c \
+       src/mouv/rrb.c \
+       src/mouv/rrr.c \
+       src/sort/sort_stack.c \
+       src/sort/small_sort.c \
+       src/sort/big_sort.c
 
-SRC = $(SRC_DIR)/push_swap.c $(SRC_DIR)/dlst_print.c \
-	  $(wildcard $(MOV_DIR)/*.c) \
-	  $(wildcard $(DLST_DIR)/*.c)
+OBJS = $(SRCS:.c=.o)
 
-# Objets
-OBJ_DIR = obj
-OBJ = $(SRC:.c=.o)
-
-# Compilateur et options
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -I $(LIBFT_PATH)
-
-# Commande de suppression
-RM = rm -rf
-
-# Règles
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
-
-$(LIBFT):
-	make -C $(LIBFT_PATH)
-
-$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 clean:
-	$(RM) $(OBJ)
-	make clean -C $(LIBFT_PATH)
+	rm -f $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
-	make fclean -C $(LIBFT_PATH)
+	rm -f $(NAME)
 
 re: fclean all
 
