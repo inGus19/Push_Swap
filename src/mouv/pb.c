@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pb.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acaes <acaes@student.s19.be>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/10 17:44:44 by acaes             #+#    #+#             */
+/*   Updated: 2024/12/10 17:44:55 by acaes            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../push_swap.h"
 
-void	pb(t_satck *a, t_stack *b)
+void	pb(t_stack *a, t_stack *b)
 {
-	t_node *node;
+	t_node	*node;
 
 	if (a->size == 0)
 		return ;
 	node = dlst_remove_front(a);
-	dlst_ad_front(b, node);
+	dlst_add_front(b, node);
 }

@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sb.c                                               :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acaes <acaes@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/10 17:45:53 by acaes             #+#    #+#             */
-/*   Updated: 2024/12/10 17:45:57 by acaes            ###   ########.fr       */
+/*   Created: 2024/12/10 17:40:55 by acaes             #+#    #+#             */
+/*   Updated: 2024/12/10 17:43:35 by acaes            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
 
-void	sb(t_stack *b)
+int	is_sorted(t_stack *stack)
 {
-	t_node	*first;
-	t_node	*second;
+	t_node	*current;
 
-	if (b->size < 2)
-		return ;
-	first = b->top;
-	second = first->next;
-	first->next = second->next;
-	if (second->next)
-		second->next->prev = first;
-	second->next = first;
-	first->prev = second;
-	second->prev = NULL;
-	b->top = second;
+	if (!stack || !stack->top)
+		return (1);
+	current = stack->top;
+	while (current->next)
+	{
+		if (current->value > current->next->value)
+			return (0);
+		current = current->next;
+	}
+	return (1);
 }

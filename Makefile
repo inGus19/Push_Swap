@@ -5,15 +5,19 @@
 #                                                     +:+ +:+         +:+      #
 #    By: acaes <acaes@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/12/01 17:09:09 by acaes             #+#    #+#              #
-#    Updated: 2024/12/01 17:09:15 by acaes            ###   ########.fr        #
+#    Created: 2024/12/10 18:42:40 by acaes             #+#    #+#              #
+#    Updated: 2024/12/10 18:44:49 by acaes            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = test
+NAME = push_swap
+
+ULT_DIR = ../Ultimate
+ULT_LIB = $(ULT_DIR)/libft.a
+ULT_INC = $(ULT_DIR)/inc
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I .
+CFLAGS = -Wall -Wextra -Werror -I . -I $(ULT_INC)
 
 SRCS = src/pars/parse_arguments.c \
        src/pars/is_number.c \
@@ -38,22 +42,25 @@ SRCS = src/pars/parse_arguments.c \
        src/mouv/rra.c \
        src/mouv/rrb.c \
        src/mouv/rrr.c \
-       src/sort/sort_stack.c \
-       src/sort/small_sort.c \
-       src/sort/big_sort.c
+       test.c
 
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+$(NAME): $(OBJS) $(ULT_LIB)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(ULT_LIB)
+
+$(ULT_LIB):
+	$(MAKE) -C $(ULT_DIR)
 
 clean:
 	rm -f $(OBJS)
+	$(MAKE) -C $(ULT_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
+	$(MAKE) -C $(ULT_DIR) fclean
 
 re: fclean all
 

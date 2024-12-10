@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rrb.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acaes <acaes@student.s19.be>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/10 17:45:24 by acaes             #+#    #+#             */
+/*   Updated: 2024/12/10 17:45:34 by acaes            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../push_swap.h"
 
-void	rrb(t_satck *b)
+void	rrb(t_stack *b)
 {
-	t_node *last;
+	t_node	*last;
 
 	if (b->size < 2)
 		return ;
 	last = dlst_remove_back(b);
-	dlst_add_front(a, last);
+	dlst_add_front(b, last);
 }

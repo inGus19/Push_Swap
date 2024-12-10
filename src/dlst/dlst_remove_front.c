@@ -1,4 +1,16 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dlst_remove_front.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acaes <acaes@student.s19.be>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/10 17:40:27 by acaes             #+#    #+#             */
+/*   Updated: 2024/12/10 17:40:36 by acaes            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../push_swap.h"
 
 t_node	*dlst_remove_front(t_stack *stack)
 {
@@ -7,7 +19,7 @@ t_node	*dlst_remove_front(t_stack *stack)
 	if (!stack || !stack->top)
 		return (NULL);
 	removed_node = stack->top;
-	stack_top = removed_node->next;
+	stack->top = removed_node->next;
 	if (stack->top)
 		stack->top->prev = NULL;
 	else
