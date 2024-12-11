@@ -6,7 +6,7 @@
 /*   By: acaes <acaes@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 17:39:48 by acaes             #+#    #+#             */
-/*   Updated: 2024/12/10 17:39:58 by acaes            ###   ########.fr       */
+/*   Updated: 2024/12/11 11:38:55 by acaes            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 void	dlst_init(t_stack *stack)
 {
 	stack->top = NULL;
-	stack->bottom = NULL;
+	stack->bot = NULL;
 	stack->size = 0;
 }

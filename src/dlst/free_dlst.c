@@ -6,7 +6,7 @@
 /*   By: acaes <acaes@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 17:40:41 by acaes             #+#    #+#             */
-/*   Updated: 2024/12/10 17:42:27 by acaes            ###   ########.fr       */
+/*   Updated: 2024/12/11 12:48:47 by acaes            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,19 @@ void	free_dlst(t_stack *stack)
 	t_node	*current;
 	t_node	*next_node;
 
-	if (!stack)
+	if (!stack || !stack->top)
 		return ;
 	current = stack->top;
-	while (current)
+	while (current != stack->bot)
 	{
 		next_node = current->next;
 		free(current);
+		current = NULL;
 		current = next_node;
 	}
+	if (stack->bot == current)
+		free(current);
 	stack->top = NULL;
-	stack->bottom = NULL;
+	stack->bot = NULL;
 	stack->size = 0;
 }

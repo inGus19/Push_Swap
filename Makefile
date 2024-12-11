@@ -6,7 +6,7 @@
 #    By: acaes <acaes@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/10 18:42:40 by acaes             #+#    #+#              #
-#    Updated: 2024/12/10 18:44:49 by acaes            ###   ########.fr        #
+#    Updated: 2024/12/11 11:26:02 by acaes            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,18 +31,12 @@ SRCS = src/pars/parse_arguments.c \
        src/dlst/dlst_remove_back.c \
        src/dlst/free_dlst.c \
        src/dlst/is_sorted.c \
-       src/mouv/sa.c \
-       src/mouv/sb.c \
-       src/mouv/ss.c \
-       src/mouv/pa.c \
-       src/mouv/pb.c \
-       src/mouv/ra.c \
-       src/mouv/rb.c \
-       src/mouv/rr.c \
-       src/mouv/rra.c \
-       src/mouv/rrb.c \
-       src/mouv/rrr.c \
-       test.c
+       src/mouv/swapy.c \
+       src/mouv/pushy.c \
+       src/mouv/rotate.c \
+       src/mouv/reverse.c \
+       src/sort/sort_three.c \
+       main.c
 
 OBJS = $(SRCS:.c=.o)
 

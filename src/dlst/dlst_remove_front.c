@@ -6,7 +6,7 @@
 /*   By: acaes <acaes@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 17:40:27 by acaes             #+#    #+#             */
-/*   Updated: 2024/12/10 17:40:36 by acaes            ###   ########.fr       */
+/*   Updated: 2024/12/11 11:41:58 by acaes            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_node	*dlst_remove_front(t_stack *stack)
 	if (stack->top)
 		stack->top->prev = NULL;
 	else
-		stack->bottom = NULL;
+		stack->bot = NULL;
 	stack->size--;
 	return (removed_node);
 }
