@@ -6,7 +6,7 @@
 #    By: acaes <acaes@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/10 18:42:40 by acaes             #+#    #+#              #
-#    Updated: 2024/12/11 11:26:02 by acaes            ###   ########.fr        #
+#    Updated: 2024/12/12 12:34:26 by acaes            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,10 @@ SRCS = src/pars/parse_arguments.c \
        src/mouv/pushy.c \
        src/mouv/rotate.c \
        src/mouv/reverse.c \
-       src/sort/sort_three.c \
+       src/algo/sort_three.c \
+       src/sort/find_median.c \
+       src/sort/stack_to_tab.c \
+       src/sort/sort_tab.c \
        main.c
 
 OBJS = $(SRCS:.c=.o)

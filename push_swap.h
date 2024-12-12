@@ -6,7 +6,7 @@
 /*   By: acaes <acaes@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 17:17:05 by acaes             #+#    #+#             */
-/*   Updated: 2024/12/11 13:10:10 by acaes            ###   ########.fr       */
+/*   Updated: 2024/12/12 12:34:32 by acaes            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,13 @@ int		is_number(char *str);
 int		is_unique(int value, t_stack *stack);
 int		ft_atoi(const char *str);
 
-// ----- Trie des piles -----
+// ----- Algorythmes -----
 void	sort_three(t_stack *a);
+//void	sort_big(t_stack *a, t_stack *b);
+//void	push_swap(t_stack *a, t_stack *b);
 
-// ----- Utilitaires -----
-
+// ----- Trie des piles -----
+int		find_median(int *tab, int size);
+int		stack_to_tab(t_stack *stack, int *tab);
+void	sort_tab(int *tab, int size);
 #endif
