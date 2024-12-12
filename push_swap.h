@@ -35,8 +35,16 @@ typedef struct s_stack
 	int		size;
 }	t_stack;
 
+// ----- Validation des arguments -----
+int		parse_arguments(int argc, char **argv, t_stack *stack);
+int		is_number(char *str);
+int		is_unique(int value, t_stack *stack);
+int		ft_atoi(const char *str);
+
 // ----- Manipulation des nœuds -----
 t_node	*dlst_new(int value);
+t_node	*find_max_node(t_stack *stack);
+void	move_to_top(t_stack *stack, t_node *node);
 
 // ----- Manipulation des piles -----
 void	dlst_init(t_stack *stack);
@@ -64,19 +72,16 @@ void	rra(t_stack *a);
 void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
 
-// ----- Validation des arguments -----
-int		parse_arguments(int argc, char **argv, t_stack *stack);
-int		is_number(char *str);
-int		is_unique(int value, t_stack *stack);
-int		ft_atoi(const char *str);
-
-// ----- Algorythmes -----
-void	sort_three(t_stack *a);
-//void	sort_big(t_stack *a, t_stack *b);
-//void	push_swap(t_stack *a, t_stack *b);
-
 // ----- Trie des piles -----
 int		find_median(int *tab, int size);
 int		stack_to_tab(t_stack *stack, int *tab);
 void	sort_tab(int *tab, int size);
+void	push_chunk(t_stack *a, t_stack *b, int pivot);
+void	back_to_a(t_stack *a, t_stack *b);
+
+// ----- Algorythmes -----
+void	sort_three(t_stack *a);
+void	big_sort(t_stack *a, t_stack *b);
+void	push_swap(t_stack *a, t_stack *b);
+
 #endif
